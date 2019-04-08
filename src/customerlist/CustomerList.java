@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * David Lutelmowski
+ * 08/04/2019
+ * Customer List
  */
 
 package customerlist;
@@ -27,64 +27,63 @@ public class CustomerList {
         // TODO code application logic here
         read();
     }
-    
+    // Open file and show list of customers 
     public static void read(){
         
         line = "";
         out = "Customers:\n";
         try{
         text = new BufferedReader(new FileReader("Y:\\Documents\\NetBeansProjects\\CustomerList\\List\\CustomerList.txt"));
-    }catch(FileNotFoundException e){
-     System.out.println("Error: File Not Found");
+        }catch(FileNotFoundException e){
+         System.out.println("Error: File Not Found");
         }
  
         do {
-           try{ 
+            try{ 
                line = (text.readLine());
-           }catch(IOException e){}
+                }catch(IOException e){}
            
-           if(line != null){
+        if(line != null){
             out += (line + "\n");
             
-           }else{
-              try{ text.close(); }catch(IOException e){}
-           }
+        }else{
+            try{ text.close(); }catch(IOException e){}
+        }
             
         }while(line != null);
         
         System.out.println(out);
-        
-    }
+        }
     
     public static void write(){
         File dataFile = new File("Y:\\Documents\\NetBeansProjects\\CustomerList\\List\\CustomerList.txt");
-		FileWriter out;
-		BufferedWriter writeFile;
-		Scanner input = new Scanner(System.in);
+	FileWriter out;
+	BufferedWriter writeFile;
+	Scanner input = new Scanner(System.in);
                 
-		try {
-			out = new FileWriter(dataFile,true);
-			writeFile = new BufferedWriter(out);
-			for (int i = 0; i < 2; i++) {
-				System.out.print("Enter Customers Name: ");
-				name = input.next();
-				System.out.print("Enter Customers Phone Number: ");
-				phoneNumber = input.nextInt();
-                                System.out.print("Enter Customers Postal Code: ");
-				postalCode = input.next();
-				writeFile.write(name);
-				writeFile.newLine();
-				writeFile.write(String.valueOf(phoneNumber));
-				writeFile.newLine();
-                                writeFile.write(String.valueOf(postalCode));
-				writeFile.newLine();
-			}  	
+	try {
+	out = new FileWriter(dataFile,true);
+	writeFile = new BufferedWriter(out);
+	for (int i = 0; i < 2; i++) {
+		System.out.print("Enter Customers Name: ");
+		name = input.next();
+		System.out.print("Enter Customers Phone Number: ");
+		phoneNumber = input.nextInt();
+                System.out.print("Enter Customers Postal Code: ");
+		postalCode = input.next();
+		writeFile.write(name);
+		writeFile.newLine();
+		writeFile.write(String.valueOf(phoneNumber));
+		writeFile.newLine();
+                writeFile.write(String.valueOf(postalCode));
+		writeFile.newLine();
+                }  	
     		writeFile.close();
     		out.close();
     		System.out.println("Data written to file.");
                 } catch (IOException e) {
-                        System.out.println("Problem writing to file.");
-                        System.err.println("IOException: " + e.getMessage());
+                System.out.println("Problem writing to file.");
+                System.err.println("IOException: " + e.getMessage());
                 }
            }
       }	
